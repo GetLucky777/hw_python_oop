@@ -31,6 +31,7 @@ class Training:
 
     M_IN_KM: float = 1000
     LEN_STEP: float = 0.65
+    MINS_IN_HOUR: float = 60
 
     def __init__(self,
                  action: float,
@@ -69,7 +70,6 @@ class Running(Training):
 
     COEFF_CALORIE_1: float = 18
     COEFF_CALORIE_2: float = 20
-    MINS_IN_HOUR: float = 60
 
     def get_spent_calories(self) -> float:
         """Получить количество затраченных калорий."""
@@ -84,7 +84,6 @@ class SportsWalking(Training):
 
     COEFF_CALORIE_1: float = 0.035
     COEFF_CALORIE_2: float = 0.029
-    MINS_IN_HOUR: float = 60
 
     def __init__(self,
                  action: float,
