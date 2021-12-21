@@ -1,16 +1,16 @@
-from typing import Dict, List, Type, Union
 from dataclasses import dataclass, field
+from typing import Dict, List, Type, Union
 
 
 @dataclass
 class InfoMessage:
     """Информационное сообщение о тренировке."""
-    TRAINING_MESSAGE: str = field(default=('Тип тренировки: {training_type}; '
-                                           'Длительность: {duration_hours} ч.; '
-                                           'Дистанция: {distance} км; '
-                                           'Ср. скорость: {speed} км/ч; '
-                                           'Потрачено ккал: {calories}.'),
-                                  init=False)
+    TRAINING_MSG: str = field(default=('Тип тренировки: {training_type}; '
+                                       'Длительность: {duration_hours} ч.; '
+                                       'Дистанция: {distance} км; '
+                                       'Ср. скорость: {speed} км/ч; '
+                                       'Потрачено ккал: {calories}.'),
+                              init=False)
     training_type: str
     duration: str
     distance: str
@@ -19,11 +19,11 @@ class InfoMessage:
 
     def get_message(self) -> str:
         """Получить сообщение с информацией о тренировке"""
-        return self.TRAINING_MESSAGE.format(training_type=self.training_type,
-                                            duration_hours='%.3f' % self.duration,
-                                            distance='%.3f' % self.distance,
-                                            speed='%.3f' % self.speed,
-                                            calories='%.3f' % self.calories)
+        return self.TRAINING_MSG.format(training_type=self.training_type,
+                                        duration_hours='%.3f' % self.duration,
+                                        distance='%.3f' % self.distance,
+                                        speed='%.3f' % self.speed,
+                                        calories='%.3f' % self.calories)
 
 
 class Training:
