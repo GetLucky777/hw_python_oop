@@ -154,23 +154,22 @@ def read_package(workout_type: str, data: list) -> Training:
     }
     if workout_type in training_codes:
         return training_codes[workout_type](*data)
-    else:
-        raise KeyError('Unknown type of training!')
+    raise ValueError('Unknown type of training!')
 
 
-def main(training: Type[Training]) -> None:
+def main(training: Training) -> None:
     """Главная функция."""
-    info: Type[InfoMessage] = training.show_training_info()
+    info: InfoMessage = training.show_training_info()
     print(info.get_message())
 
 
 if __name__ == '__main__':
-    packages: List[Tuple[str, List]] = [
+    packages: List[Tuple[str, List[int]]] = [
         ('SWM', [720, 1, 80, 25, 40]),
         ('RUN', [15000, 1, 75]),
         ('WLK', [9000, 1, 75, 180]),
     ]
 
     for workout_type, data in packages:
-        training: Type[Training] = read_package(workout_type, data)
+        training: Training = read_package(workout_type, data)
         main(training)
